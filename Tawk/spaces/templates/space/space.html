@@ -1,0 +1,34 @@
+{% extends 'core/base.html' %}
+
+{% block title %}{{ space.name }} | {% endblock %}
+
+{% block content %}
+
+{% if present %}
+<h1>Requested</h1>
+{% else %}
+<div class=" container is-max-desktop " style="text-align:center;margin-top:5ch;">
+  <div class="card">
+    <div>
+      <p style="padding: 2%;">
+        {{space.About}}
+      </p>
+    </div>
+
+    <form method="post" action="." style="padding: 2%;">
+      {% csrf_token %}
+
+      <input type="hidden" name="space_id" value={{space.id}}>
+      <input type="hidden" name="user" value={{request.user.id}}>
+      <input type="hidden" name="slug" value={{space.slug}}>
+      <input type="hidden" name="name" value={{space.name}}>
+
+      <button class="is-primary button" style="margin-top:5ch">join</button>
+    </form>
+  </div>
+</div>
+
+
+{% endif %}
+{{form.errors}}
+{% endblock %}

@@ -1,0 +1,77 @@
+{% extends 'core/base.html' %}
+
+{% block title %}{{Post.Title}} | {% endblock %}
+
+{% block content %}
+
+<div class="container ">
+    <div style="margin:auto;max-width: fit-content;margin-bottom:-2ch;">
+        <div class="card article">
+            <div class="card-content">
+                <div class="media">
+
+                    <div class="media-content has-text-centered">
+                        <p class="title article-title">{{Post.Title}}</p>
+                        <p class="subtitle is-6 article-subtitle">
+                            <a href="#">@{{Post.username}}</a> on {{Post.published_on}}
+                        </p>
+                    </div>
+                </div>
+                <div class="content article-body">
+                    <p>
+                        {{Post.Content}}
+
+                    </p>
+                </div>
+
+
+
+            </div>
+
+        </div>
+        <div style="max-width: 90%;margin:auto">
+            <form method="post" style="margin-top: 3%;" action=".">
+                {% csrf_token %}
+                <textarea class="textarea is-primary" placeholder="comment" name="comment"></textarea>
+                <input type="hidden" name="Space" value="{{space}}">
+                <input type="hidden" name="Post" value="{{Post.id}}">
+                <input type="hidden" name="username" value="{{request.user.username}}">
+                <input type="hidden" name="user" value="{{request.user.id}}">
+                <div style="max-width:fit-content;margin-top: 2%;margin-left: auto;">
+                    <button class="button is-primary">Comment</button>
+                </div>
+
+            </form>
+            <div style="overflow:scroll;max-height:30vw;">
+
+
+                {% for comment in Comments%}
+                <article class="media">
+                    <figure class="media-left">
+                        <p class="image is-48x48">
+                            <img src="https://bulma.io/images/placeholders/96x96.png">
+                        </p>
+                    </figure>
+                    <div class="media-content">
+                        <div class="content">
+                            <p>
+                                <strong>@{{comment.username}}</strong>
+                                <br>
+                                {{comment.comment}}
+                                <br>
+                                <small>{{comment.commented_on}}</small>
+                            </p>
+                        </div>
+
+
+                    </div>
+                </article>
+
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,56 @@
+<link rel="stylesheet" href="../../static/css/Auth.css">
+{% extends 'core/base.html' %}
+
+
+{% block title %} SignIn | {% endblock %}
+{% block content %}
+
+
+<section class="container" id="login">
+    <div class="columns is-multiline">
+        <div class="column is-8 is-offset-2 register">
+            <div class="columns">
+                <div class="column left">
+                    <h1 class="title is-1">Welcome to Space</h1>
+                    <h2 class="subtitle colored is-4">
+                        <p class="description">Not part of family <a href="/signUp/" class="ml-2">SignUp</a></p>
+                    </h2>
+                    <p>Be the part of our family and join for all the fun , make friends hang out and discover similar
+                        intrests.</p>
+                </div>
+                <div class="column right has-text-centered">
+                    <h1 class="title is-4">Sign In </h1>
+                    <form method="POST" action="">
+                        {% csrf_token %}
+
+
+
+                        <div class="field">
+                            <div class="control">
+                                {{form.username}}
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="control">
+                                {{form.password}}
+                            </div>
+                        </div>
+
+                        <button class="button is-block is-primary is-fullwidth is-medium" type="submit"
+                            value="Register Account">Login</button>
+                        <br />
+
+                    </form>
+                    {{form.errors}}
+
+                </div>
+            </div>
+        </div>
+        <div class="column is-8 is-offset-2">
+            <br>
+
+        </div>
+    </div>
+</section>
+<script src="../../static/js/signin.js"></script>
+{% endblock %}

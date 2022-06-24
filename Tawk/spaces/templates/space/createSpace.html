@@ -1,0 +1,42 @@
+{% extends 'core/base.html' %}
+
+{% block title %} CreateSpace | {% endblock %}
+
+{% block content %}
+<div class="is-max-desktop container  ">
+    <form method="POST" action="">
+        {% csrf_token %}
+        <label> Name of your Space</label><br>
+        <input class="input is-medium" type="text" name="name" placeholder="Space Name">
+        <br>
+        <br>
+        <label>Describe Your Space</label><br>
+        <br>
+        <textarea class="is-medium textarea" name="About" placeholder="About Space"></textarea>
+        <br>
+        <label>Add tags(Press Enter for adding)</label><br>
+        <br>
+        <div class="is-flex">
+            <input class="input btn" type="tags" placeholder="Add Tag" value="" onsubmit="myClickFn()" name="tags">
+            <button class="button" onclick="myClickFn()" style="display: none;">add</button>
+        </div>
+        <br>
+        <label>Add ImageLink</label>
+        <input class="input is-medium" type="text" name="image" placeholder="Image Link">
+        <input type="hidden"  name="owner" value="{{request.user.id}}">
+
+        <button class="button" style="margin-top: 2ch;">Submit</button>
+
+        <br />
+
+    </form>
+{{form.errors}}
+
+</div>
+<script>
+    const myClickFn = () => {
+        event.preventDefault()
+        bulmaTagsinput.attach();
+    }
+</script>
+{% endblock %}
