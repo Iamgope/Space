@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="../../static/Css/room.css">
+<link rel="stylesheet" href="../../static/css/room.css">
 
 {% extends 'core/base.html' %}
 
@@ -10,9 +10,16 @@
 <div class="container">
     <h1 class="is-size-1-desktop is-size-2-mobile	has-text-centered	">{{space.name}}</h1>
     <div style="margin:auto;max-width: fit-content;margin-bottom:-2ch;">
-        <button class="js-modal-trigger button" data-target="modal-js-example">
-            Create
+        <button class="js-modal-trigger button is-primary" data-target="modal-js-example">
+            Create Post
         </button>
+        {% if isOwner %}
+        <a href="/space/{{space.slug}}/Edit/">
+            <button class=" button is-danger">
+                Edit Space
+            </button>
+        </a>
+        {% endif %}
     </div>
     {{form.errors}}
     <div id="modal-js-example" class="modal">
@@ -38,44 +45,48 @@
         <button class="modal-close is-large" aria-label="close"></button>
     </div>
 
-    <section class="articles">
-        <div class="column is-8 is-offset-2">
 
-            {% for post in Posts%}
-            <div class="card article">
-                <div class="card-content">
-                    <div class="media">
+    <button class="modal-close is-large" aria-label="close"></button>
+</div>
 
-                        <div class="media-content has-text-centered">
-                            <p class="title article-title">{{post.Title}}</p>
-                            <p class="subtitle is-6 article-subtitle">
-                                <a href="#">@{{post.username}}</a> on {{post.published_on}}
-                            </p>
-                        </div>
-                    </div>
-                    <div class="content article-body">
-                        <p>
-                            {{post.Content}}
+<section class="articles">
+    <div class="column is-8 is-offset-2">
 
+        {% for post in Posts%}
+        <div class="card article">
+            <div class="card-content">
+                <div class="media">
+
+                    <div class="media-content has-text-centered">
+                        <p class="title article-title">{{post.Title}}</p>
+                        <p class="subtitle is-6 article-subtitle">
+                            <a href="#">@{{post.username}}</a> on {{post.published_on}}
                         </p>
                     </div>
-                    <a href="/space/{{space.slug}}/singlePost/{{post.id}}/">
-                        <div style="margin-left:auto;max-width: fit-content;" class="is-flex">
-                            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
-                                <path d="M0 0h24v24H0z" fill="none" />
-                                <path
-                                    d="M21.99 4c0-1.1-.89-2-1.99-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4-.01-18zM18 14H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z" />
-                            </svg>
-                            <p style="margin-top:-5px;font-weight:bold">comments</p>
-                        </div>
-                    </a>
-
-
                 </div>
+                <div class="content article-body">
+                    <p>
+                        {{post.Content}}
+
+                    </p>
+                </div>
+                <a href="/space/{{space.slug}}/singlePost/{{post.id}}/">
+                    <div style="margin-left:auto;max-width: fit-content;" class="is-flex">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+                            <path d="M0 0h24v24H0z" fill="none" />
+                            <path
+                                d="M21.99 4c0-1.1-.89-2-1.99-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4-.01-18zM18 14H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z" />
+                        </svg>
+                        <p style="margin-top:-5px;font-weight:bold">comments</p>
+                    </div>
+                </a>
+
+
             </div>
-            {% endfor %}
         </div>
-    </section>
+        {% endfor %}
+    </div>
+</section>
 </div>
 
 <script>

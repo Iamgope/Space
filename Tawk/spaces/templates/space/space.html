@@ -17,12 +17,12 @@
 
     <form method="post" action="." style="padding: 2%;">
       {% csrf_token %}
-
+      <input type="text" name="code" class="input is-medium is-primary" placeholder="Enter the secret code ">
       <input type="hidden" name="space_id" value={{space.id}}>
       <input type="hidden" name="user" value={{request.user.id}}>
       <input type="hidden" name="slug" value={{space.slug}}>
-      <input type="hidden" name="name" value={{space.name}}>
-
+      <input type="hidden" name="name" value="{{space.name}}">
+      <input type="hidden" name="is_member" value={{True}}>
       <button class="is-primary button" style="margin-top:5ch">join</button>
     </form>
   </div>

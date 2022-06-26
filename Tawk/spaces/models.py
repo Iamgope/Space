@@ -16,7 +16,7 @@ class space(models.Model):
     tags = TaggableManager()
     image = models.CharField(max_length=511,null=True)
     About = models.TextField(null=True)
-
+    secret_code=models.CharField(max_length=255)
     def __str__(self):
         return self.name
     def save(self, *args, **kwargs): 
@@ -31,6 +31,7 @@ class subscription(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     slug = models.CharField(max_length=256)
     is_member = models.BooleanField(default=TRUE)
+    code=models.CharField(max_length=255)
 
     class Meta:
         unique_together = ('space_id', 'user')

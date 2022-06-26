@@ -1,0 +1,75 @@
+{% extends 'core/base.html' %}
+
+{% block title %}{{ Space.name }} | {% endblock %}
+
+{% block content %}
+
+<div class="container is-max-desktop" style="margin:auto;text-align:center;max-width: 90%;">
+
+
+    <box class="box container" style="margin: auto;">
+        <h2 style="font-size:2ch;margin-bottom: 2ch;">Current Secret Code</h2>
+        <div style="padding:3ch; border: 2px solid rgb(13, 235, 131);overflow: scroll;">
+            <h1 style="font-size:3ch;margin-bottom: 2ch;">{{Space.secret_code}}</h1>
+            <input class="is-medium input" placeholder="enter new code" />
+            <button class="button is-primary" style="margin-top: 2ch;">Change</button>
+        </div>
+
+
+    </box>
+
+    <!-- {% if Subscriptions %}
+    <h1 style="font-size:2.8ch ;font-weight:600 ;margin:2ch">Requests for {{Space.name}}</h1>
+    {% else %}
+    <h1 style="font-size:2.8ch ;font-weight:600"> No Requests for {{Space.name}}</h1>
+    {% endif %}
+    <br><br>
+    <div style="overflow:scroll;max-width: 90vw;max-height:50ch ;">
+
+
+
+        {% for subs in Subscriptions%}
+
+        <div class="is-flex" style="margin-bottom: 5%;">
+            <h2 style="margin-inline:10% ;font-size:2.5ch;font-weight: 500;">@{{subs.user}}</h2>
+            <button class="button is-primary" style="margin-inline:10% ;">Approve</button>
+            <button class="button is-danger" style="margin-inline:10% ;">Reject</button>
+        </div>
+
+
+        {% endfor %}
+
+
+
+
+
+    </div> -->
+
+    {% if Members %}
+
+    <h1 style="font-size:2.8ch ;font-weight:600 ;margin:2ch"> All Members </h1>
+    <div
+        style="max-width: max-content; margin: auto; background-color: rgb(218, 218, 218); padding: 2%;margin-bottom: 5ch;overflow: scroll;height: 35ch;">
+
+
+        {% for member in Members%}
+
+        <div class="is-flex " style="margin-bottom: 2ch;">
+            <h2 style="margin-inline:10% ;font-size:2.5ch;font-weight: 500;">@{{member.user}}</h2>
+            <button class="button is-danger" style="margin-inline:10ch ;">Remove</button>
+        </div>
+        <hr>
+
+        {% endfor %}
+
+
+    </div>
+
+
+    {% else %}
+    <h1 style="font-size:2.8ch ;font-weight:600 ;margin:2.5ch"> No Active Members </h1>
+
+    {% endif %}
+
+</div>
+{% endblock %}

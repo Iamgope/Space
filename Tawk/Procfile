@@ -1,0 +1,1 @@
+web: gunicorn Tawk.wsgi --log-file -

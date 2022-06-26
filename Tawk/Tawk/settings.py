@@ -25,10 +25,10 @@ SECRET_KEY = 'django-insecure-89bz1@$@tm3t1&zk1va6o7v&uyslju1anyq_f+5p6q))ppmcr3
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-LOGOUT_REDIRECT_URL="/"
-LOGIN_REDIRECT_URL="/space/"
-LOGIN_URL="/login/"
+ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com','localhost']
+LOGOUT_REDIRECT_URL = "/"
+LOGIN_REDIRECT_URL = "/space/"
+LOGIN_URL = "/login/"
 
 # Application definition
 
@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
     'channels',
     'core',
@@ -48,6 +49,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -75,7 +77,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'Tawk.wsgi.application'
-ASGI_APPLICATION=  'Tawk.asgi.application'
+ASGI_APPLICATION = 'Tawk.asgi.application'
 
 CHANNEL_LAYERS = {
     'default': {

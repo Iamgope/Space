@@ -1,0 +1,82 @@
+
+{% extends 'core/base.html' %}
+
+{% block title %} Join | {% endblock %}
+
+{% block content %}
+<style>
+  .cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 5ch;
+  }
+
+  .card {
+    margin: 20px;
+    padding: 20px;
+    width: 400px;
+
+    display: grid;
+  }
+</style>
+
+<form method="post" action="." style="background-image: url(https://source.unsplash.com/random/wsanter
+
+  );height: 87vh;width: 100vw;">
+  {% csrf_token %}
+
+  <input class="input is-medium is-primary" name="spaceName" type="text"
+    style="top:20vh;max-width: 80%;left: 10vw;text-align: center;" placeholder="Search for Spaces using names or tags">
+
+
+  <div style="max-width: fit-content;margin:auto">
+    <button class="button is-primary" style="top: 25vh;">Search</button>
+
+  </div>
+</form>
+
+{% if search %}
+<h1 class="is-size-2	has-text-centered	is-size-1-mobile	">Results for <span style="color: #2ed6af;">{{query}}</span>
+</h1>
+
+<div>
+
+  <div class="cards">
+    {% for space in Spaces %}
+    <div class="card">
+      <div class="card-image">
+        <figure class="image is-4by3">
+
+          <img src="{{space.image}}" alt="Placeholder image">
+
+        </figure>
+      </div>
+      <div class="card-content">
+        <div class="media">
+
+          <div class="media-content">
+
+
+
+            <p class="title is-4">{{space.name}}</p>
+            <p class="subtitle is-6">by @{{space.owner}}</p>
+
+
+          </div>
+
+          <a href="/space/{{space.slug}}/">
+            <button class="button is-primary">Visit</button>
+          </a>
+
+
+
+        </div>
+
+
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+  {% endblock %}

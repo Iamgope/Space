@@ -8,6 +8,7 @@ urlpatterns = [
     path('create/space/', views.CreateSpace, name="create"),
     path('<slug:slug>/singlePost/<int:pk>/',
          views.SinglePost, name="singlePost"),
-    path('explore/All/', views.ExploreSpaces, name="explore"),
+    path('<slug:slug>/Edit/',views.EditSpace,name="EditSpace"),
+    path('join/today/',views.Search_Space,name="Join_Space")
     # path('create/post/',)
 ]

@@ -23,10 +23,14 @@
         <br>
         <label>Add ImageLink</label>
         <input class="input is-medium" type="text" name="image" placeholder="Image Link">
+        <br><br>
+        <label>SecretCode for your Space</label>
+        <input class="input is-medium" type="text" name="secret_code" placeholder="Secret Code">
+        <br>
         <input type="hidden"  name="owner" value="{{request.user.id}}">
 
         <button class="button" style="margin-top: 2ch;">Submit</button>
-
+       
         <br />
 
     </form>

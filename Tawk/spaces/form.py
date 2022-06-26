@@ -6,13 +6,13 @@ from django.forms import ModelForm
 class SpaceCreateForm(ModelForm):
     class Meta:
         model = space
-        fields = ["name", "tags", "image", "owner","About"]
+        fields = ["name", "tags", "image", "owner", "About","secret_code"]
 
 
 class subscriptionCreateForm(ModelForm):
     class Meta:
         model = subscription
-        fields = '__all__'
+        fields = ["name","space_id","user","slug","is_member","code"]
 
 
 class CommentForm(ModelForm):
