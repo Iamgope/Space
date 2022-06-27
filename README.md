@@ -4,7 +4,7 @@ A web application in django for creating and joing virtual spaces for hanging ou
 ## Website
 [Visite The Site](https://spacetawk.herokuapp.com/)
 
-## How to run Locally?
+## How to run locally?
 clone the project by 
 ```bash
 git clone https://github.com/iamgope/Space.git
