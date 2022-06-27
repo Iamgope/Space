@@ -1,4 +1,3 @@
-from attr import field
 from .models import Posts, space, subscription, Comment
 from django.forms import ModelForm
 
